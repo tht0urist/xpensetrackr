@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: xpensetrackr
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: xpensetrackr-db
+      username: admin
+      password: '@dmin'
+      authentication-database: admin
+goCardless:
+  token: 124
+  url: localhost:9000
+---
+spring:
+  profiles:
+    active: local
+goCardless:
+  token: 124
+  url: localhost:3000/mock

@@ -3,19 +3,19 @@ services:
     build: .
     ports:
       - "8080:8080"
-    environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://admin:@dmin@mongodb:27017/xpensetrackr-db
     depends_on:
       - mongodb
 
   mongodb:
     image: mongo:latest
+    container_name: mongodb
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=@dmin
       - MONGO_INITDB_DATABASE=xpensetrackr-db
     volumes:
       - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     ports:
       - "27017:27017"
 
